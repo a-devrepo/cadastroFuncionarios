@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import entities.Funcionario;
+import exceptions.RepositoryException;
 
 public class FuncionarioRepositoryJSON implements FuncionarioRepository {
 
@@ -24,7 +25,7 @@ public class FuncionarioRepositoryJSON implements FuncionarioRepository {
 
 			printWriter.println("]");
 		} catch (Exception e) {
-			System.out.println("Erro ao exportar os funcionarios: " + e.getMessage());
+			throw new RepositoryException("Erro ao exportar funcionarios: " + e.getMessage());
 		}
 	}
 }
