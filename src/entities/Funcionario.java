@@ -9,6 +9,8 @@ public class Funcionario extends Pessoa {
 	private Double salario;
 	private Setor setor;
 	private Funcao funcao;
+	
+	public Funcionario() {}
 
 	public Funcionario(UUID id, String nome, String cpf, String matricula, Double salario, Setor setor, Funcao funcao) {
 		super(id, nome);
