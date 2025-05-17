@@ -7,12 +7,14 @@ public class Funcionario extends Pessoa {
 	private String cpf;
 	private String matricula;
 	private Double salario;
+	private Setor setor;
 
-	public Funcionario(UUID id,String nome, String cpf,String matricula,Double salario) {
-		super(id,nome);
+	public Funcionario(UUID id, String nome, String cpf, String matricula, Double salario,Setor setor) {
+		super(id, nome);
 		this.cpf = cpf;
 		this.matricula = matricula;
 		this.salario = salario;
+		this.setor = setor;
 	}
 
 	public String getCpf() {
@@ -37,6 +39,14 @@ public class Funcionario extends Pessoa {
 
 	public void setSalario(Double salario) {
 		this.salario = salario;
+	}
+
+	public Setor getSetor() {
+		return setor;
+	}
+
+	public void setSetor(Setor setor) {
+		this.setor = setor;
 	}
 
 	@Override
