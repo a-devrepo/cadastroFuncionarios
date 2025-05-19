@@ -67,8 +67,8 @@ public class FuncionarioController {
 		consoleOutput.exibirTextoEntradaDados("Informe a função do funcionário: ");
 		var descricaoFuncao = scanner.nextLine();
 		consoleOutput.exibirTextoEntradaDados("Informe o salário do funcionário: ");
-		var salario = scanner.nextDouble();
-		
+		var salario = Double.parseDouble(scanner.nextLine());
+
 		var setor = new Setor();
 		setor.setId(UUID.randomUUID());
 		setor.setDescricao(descricaoSetor);
