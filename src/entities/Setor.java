@@ -1,6 +1,9 @@
 package entities;
 
+import java.util.Objects;
 import java.util.UUID;
+
+import exceptions.DomainException;
 
 public class Setor {
 	private UUID id;
@@ -10,8 +13,8 @@ public class Setor {
 	}
 
 	public Setor(UUID id, String descricao) {
-		this.id = id;
-		this.descricao = descricao;
+		this.setId(id);
+		this.setDescricao(descricao);
 	}
 
 	public UUID getId() {
@@ -19,6 +22,10 @@ public class Setor {
 	}
 
 	public void setId(UUID id) {
+		if (!Objects.nonNull(id)) {
+			throw new DomainException("ID não pode ser null.");
+		}
+
 		this.id = id;
 	}
 
@@ -27,6 +34,9 @@ public class Setor {
 	}
 
 	public void setDescricao(String descricao) {
+		if (descricao == null || descricao.isBlank()) {
+			throw new DomainException("Descrição não pode ser nula ou vazia.");
+		}
 		this.descricao = descricao;
 	}
 
