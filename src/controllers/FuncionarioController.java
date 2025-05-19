@@ -56,32 +56,30 @@ public class FuncionarioController {
 	}
 
 	private void cadastrarFuncionario() {
-		consoleOutput.exibirTextoEntradaDados("Informe o nome do funcionário: ");
-		var nome = scanner.nextLine();
-		consoleOutput.exibirTextoEntradaDados("Informe o CPF do funcionário: ");
-		var cpf = scanner.nextLine();
-		consoleOutput.exibirTextoEntradaDados("Informe a matrícula do funcionário: ");
-		var matricula = scanner.nextLine();
-		consoleOutput.exibirTextoEntradaDados("Informe o setor do funcionário: ");
-		var descricaoSetor = scanner.nextLine();
-		consoleOutput.exibirTextoEntradaDados("Informe a função do funcionário: ");
-		var descricaoFuncao = scanner.nextLine();
-		consoleOutput.exibirTextoEntradaDados("Informe o salário do funcionário: ");
-		var salario = Double.parseDouble(scanner.nextLine());
-
-		var setor = new Setor();
-		setor.setId(UUID.randomUUID());
-		setor.setDescricao(descricaoSetor);
-		var funcao = new Funcao();
-		funcao.setId(UUID.randomUUID());
-		funcao.setNome(descricaoFuncao);
-
-		var funcionario = new Funcionario(UUID.randomUUID(), nome, cpf, matricula, salario, setor, funcao);
+		var funcionario = montarFuncionario();
 
 		var funcionarios = new ArrayList<Funcionario>();
 		funcionarios.add(funcionario);
 
 		funcionarioRepository.exportar(funcionarios);
 		consoleOutput.exibirTextoComQuebra("Funcionário cadastrado com sucesso!");
+	}
+
+	private Funcionario montarFuncionario() {
+		var nome = lerCampo("Informe o nome do funcionário: ");
+		var cpf = lerCampo("Informe o CPF do funcionário: ");
+		var matricula = lerCampo("Informe a matrícula do funcionário: ");
+		var descricaoSetor = lerCampo("Informe o setor do funcionário: ");
+		var descricaoFuncao = lerCampo("Informe a função do funcionário: ");
+		var salario = Double.parseDouble(lerCampo("Informe o salário do funcionário: "));
+		var setor = new Setor(UUID.randomUUID(), descricaoSetor);
+		var funcao = new Funcao(UUID.randomUUID(), descricaoFuncao);
+
+		return new Funcionario(UUID.randomUUID(), nome, cpf, matricula, salario, setor, funcao);
+	}
+
+	private String lerCampo(String mensagem) {
+		consoleOutput.exibirTextoEntradaDados(mensagem);
+		return scanner.nextLine();
 	}
 }
