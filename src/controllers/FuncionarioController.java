@@ -7,6 +7,7 @@ import java.util.UUID;
 import entities.Funcao;
 import entities.Funcionario;
 import entities.Setor;
+import exceptions.DomainException;
 import exceptions.RepositoryException;
 import repositories.FuncionarioRepository;
 
@@ -44,6 +45,8 @@ public class FuncionarioController {
 				}
 
 			} catch (RepositoryException e) {
+				System.out.println(e.getMessage());
+			} catch (DomainException e) {
 				System.out.println(e.getMessage());
 			}
 		}
