@@ -10,14 +10,17 @@ import entities.Setor;
 import exceptions.DomainException;
 import exceptions.RepositoryException;
 import repositories.FuncionarioRepository;
+import views.ConsoleOutput;
 
 public class FuncionarioController {
 
 	private final FuncionarioRepository funcionarioRepository;
 	private final Scanner scanner = new Scanner(System.in);
+	private final ConsoleOutput consoleOutput;
 
-	public FuncionarioController(FuncionarioRepository funcionarioRepository) {
+	public FuncionarioController(FuncionarioRepository funcionarioRepository, ConsoleOutput consoleOutput) {
 		this.funcionarioRepository = funcionarioRepository;
+		this.consoleOutput = consoleOutput;
 	}
 
 	public void exibirOpcoes() {
