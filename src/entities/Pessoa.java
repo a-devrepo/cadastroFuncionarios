@@ -14,8 +14,8 @@ public abstract class Pessoa {
 	}
 
 	public Pessoa(UUID id, String nome) {
-		this.id = id;
-		this.nome = nome;
+		this.setId(id);
+		this.setNome(nome);
 	}
 
 	public UUID getId() {
@@ -38,8 +38,8 @@ public abstract class Pessoa {
 		if (!Objects.nonNull(nome)) {
 			throw new DomainException("Nome não pode ser null.");
 		}
-		
-		if(nome.isBlank()) {
+
+		if (nome.isBlank()) {
 			throw new DomainException("Nome não pode estar em branco.");
 		}
 
