@@ -1,6 +1,9 @@
 package entities;
 
+import java.util.Objects;
 import java.util.UUID;
+
+import exceptions.DomainException;
 
 public abstract class Pessoa {
 
@@ -20,6 +23,10 @@ public abstract class Pessoa {
 	}
 
 	public void setId(UUID id) {
+		if (!Objects.nonNull(id)) {
+			throw new DomainException("ID não pode ser null.");
+		}
+
 		this.id = id;
 	}
 
@@ -28,6 +35,17 @@ public abstract class Pessoa {
 	}
 
 	public void setNome(String nome) {
+		if (!Objects.nonNull(nome)) {
+			throw new DomainException("Nome não pode ser null.");
+		}
+		
+		if(nome.isBlank()) {
+			throw new DomainException("Nome não pode estar em branco.");
+		}
+
+		if (nome.length() < 3) {
+			throw new DomainException("Nome deve ter no míninmo 3 caracteres.");
+		}
 		this.nome = nome;
 	}
 
