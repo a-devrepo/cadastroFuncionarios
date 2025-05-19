@@ -29,9 +29,9 @@ public class FuncionarioController {
 
 		while (excutando) {
 			try {
-				System.out.println("1. Cadastrar Funcionários");
-				System.out.println("2. Sair");
-				System.out.println("Escolha uma opção (1-2):");
+				consoleOutput.exibirTextoComQuebra("1. Cadastrar Funcionários");
+				consoleOutput.exibirTexto("2. Sair");
+				consoleOutput.exibirTextoEntradaDados("Escolha uma opção (1-2):");
 
 				var opcao = scanner.nextLine();
 
@@ -40,33 +40,35 @@ public class FuncionarioController {
 					cadastrarFuncionario();
 					break;
 				case "2":
-					System.out.println("Saindo do programa...");
+					consoleOutput.exibirTexto("Saindo...");
 					excutando = false;
 					break;
 				default:
-					System.out.println("Opção inválida! Tente novamente.");
+					consoleOutput.exibirTextoComQuebra("Opção inválida! Tente novamente.");
 				}
 
 			} catch (RepositoryException e) {
-				System.out.println(e.getMessage());
+				consoleOutput.exibirTextoComQuebra(e.getMessage());
 			} catch (DomainException e) {
-				System.out.println(e.getMessage());
+				consoleOutput.exibirTextoComQuebra(e.getMessage());
 			}
 		}
 	}
 
 	private void cadastrarFuncionario() {
-		System.out.print("Informe o nome do funcionário: ");
+		consoleOutput.exibirTextoEntradaDados("Informe o nome do funcionário: ");
 		var nome = scanner.nextLine();
-		System.out.print("Informe o CPF do funcionário: ");
+		consoleOutput.exibirTextoEntradaDados("Informe o CPF do funcionário: ");
 		var cpf = scanner.nextLine();
-		System.out.print("Informe a matrícula do funcionário: ");
+		consoleOutput.exibirTextoEntradaDados("Informe a matrícula do funcionário: ");
 		var matricula = scanner.nextLine();
-		System.out.print("Informe o setor do funcionário: ");
+		consoleOutput.exibirTextoEntradaDados("Informe o setor do funcionário: ");
 		var descricaoSetor = scanner.nextLine();
-		System.out.print("Informe a função do funcionário: ");
+		consoleOutput.exibirTextoEntradaDados("Informe a função do funcionário: ");
 		var descricaoFuncao = scanner.nextLine();
-
+		consoleOutput.exibirTextoEntradaDados("Informe o salário do funcionário: ");
+		var salario = scanner.nextDouble();
+		
 		var setor = new Setor();
 		setor.setId(UUID.randomUUID());
 		setor.setDescricao(descricaoSetor);
@@ -74,12 +76,12 @@ public class FuncionarioController {
 		funcao.setId(UUID.randomUUID());
 		funcao.setNome(descricaoFuncao);
 
-		var funcionario = new Funcionario(UUID.randomUUID(), nome, cpf, matricula, 3000.0, setor, funcao);
+		var funcionario = new Funcionario(UUID.randomUUID(), nome, cpf, matricula, salario, setor, funcao);
 
 		var funcionarios = new ArrayList<Funcionario>();
 		funcionarios.add(funcionario);
 
 		funcionarioRepository.exportar(funcionarios);
-		System.out.println("\nFuncionário cadastrado com sucesso!");
+		consoleOutput.exibirTextoComQuebra("Funcionário cadastrado com sucesso!");
 	}
 }
