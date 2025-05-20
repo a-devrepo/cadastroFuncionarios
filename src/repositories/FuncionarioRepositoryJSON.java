@@ -21,8 +21,8 @@ public class FuncionarioRepositoryJSON implements FuncionarioRepository {
 				printWriter.println("\t\t\"id\": \"" + funcionario.getId() + "\",");
 				printWriter.println("\t\t\"nome\": \"" + funcionario.getNome() + "\",");
 				printWriter.println("\t\t\"setor\": \"" + funcionario.getSetor().getDescricao() + "\",");
-				printWriter.println("\t\t\"funcao\": \"" + funcionario.getFuncao().getNome() + "\"");
-				printWriter.println("\t\t\"salario\": \"" + funcionario.getSalario() + "\",");
+				printWriter.println("\t\t\"funcao\": \"" + funcionario.getFuncao().getNome() + "\",");
+				printWriter.println("\t\t\"salario\": \"" + funcionario.getSalario() + "\"");
 				printWriter.println("\t}" + (i < funcionarios.size() - 1 ? "," : ""));
 			}
 
