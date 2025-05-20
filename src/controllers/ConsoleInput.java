@@ -21,7 +21,7 @@ public class ConsoleInput {
 		this.consoleOutput = consoleOutput;
 	}
 	
-	private Funcionario montarFuncionario() {
+	public Funcionario montarFuncionario() {
 		var nome = lerCampo("Informe o nome do funcionário: ");
 		var cpf = lerCampo("Informe o CPF do funcionário: ");
 		var matricula = lerCampo("Informe a matrícula do funcionário: ");
