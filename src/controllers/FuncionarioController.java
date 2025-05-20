@@ -7,6 +7,7 @@ import java.util.UUID;
 import entities.Funcao;
 import entities.Funcionario;
 import entities.Setor;
+import exceptions.DirectoryException;
 import exceptions.DomainException;
 import exceptions.RepositoryException;
 import repositories.FuncionarioRepository;
@@ -53,6 +54,9 @@ public class FuncionarioController {
 			} catch (RepositoryException e) {
 				consoleOutput.exibirTextoComQuebra(e.getMessage());
 			} catch (DomainException e) {
+				consoleOutput.exibirTextoComQuebra(e.getMessage());
+			}
+			catch (DirectoryException e) {
 				consoleOutput.exibirTextoComQuebra(e.getMessage());
 			}
 		}
