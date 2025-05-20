@@ -9,7 +9,7 @@ import exceptions.DirectoryException;
 
 public class PastaView {
 
-	public File escolherDiretorio() {
+	public String escolherDiretorio() {
 		JFileChooser seletor = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 		seletor.setDialogTitle("Selecione a pasta para salvar o arquivo");
 		seletor.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -25,6 +25,6 @@ public class PastaView {
 		if (pasta == null || !pasta.isDirectory()) {
 			throw new DirectoryException("Selecione um diretório válido.");
 		}
-		return seletor.getSelectedFile();
+		return seletor.getSelectedFile().getAbsolutePath();
 	}
 }
