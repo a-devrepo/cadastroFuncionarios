@@ -13,7 +13,7 @@ public class Main {
 	public static void main(String[] args) {
 		var funcionarioRepository = new FuncionarioRepositoryJSON();
 		var consoleOutput = new ConsoleOutput();
-		var pastaView = new views.PastaView();
+		var pastaView = new views.DirectoryView();
 		var inputValidator = new InputValidator();
 		var consoleInput = new ConsoleInput(inputValidator, new Scanner(System.in), consoleOutput);
 

@@ -10,18 +10,18 @@ import exceptions.DomainException;
 import exceptions.RepositoryException;
 import repositories.FuncionarioRepository;
 import views.ConsoleOutput;
-import views.PastaView;
+import views.DirectoryView;
 
 public class FuncionarioController {
 
 	private final FuncionarioRepository funcionarioRepository;
 	private final Scanner scanner = new Scanner(System.in);
 	private final ConsoleOutput consoleOutput;
-	private final PastaView pastaView;
+	private final DirectoryView pastaView;
 	private final ConsoleInput consoleInput;
 
 	public FuncionarioController(FuncionarioRepository funcionarioRepository, ConsoleOutput consoleOutput,
-			ConsoleInput consoleInput, PastaView pastaView) {
+			ConsoleInput consoleInput, DirectoryView pastaView) {
 		this.funcionarioRepository = funcionarioRepository;
 		this.consoleOutput = consoleOutput;
 		this.pastaView = pastaView;

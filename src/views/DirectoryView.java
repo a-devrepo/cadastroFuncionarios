@@ -5,7 +5,7 @@ import javax.swing.filechooser.FileSystemView;
 
 import exceptions.DirectoryException;
 
-public class PastaView {
+public class DirectoryView {
 
 	public String escolherDiretorio() {
 		JFileChooser seletor = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
