@@ -11,16 +11,19 @@ import exceptions.DomainException;
 import exceptions.RepositoryException;
 import repositories.FuncionarioRepository;
 import views.ConsoleOutput;
+import views.PastaView;
 
 public class FuncionarioController {
 
 	private final FuncionarioRepository funcionarioRepository;
 	private final Scanner scanner = new Scanner(System.in);
 	private final ConsoleOutput consoleOutput;
+	private final PastaView pastaView;
 
-	public FuncionarioController(FuncionarioRepository funcionarioRepository, ConsoleOutput consoleOutput) {
+	public FuncionarioController(FuncionarioRepository funcionarioRepository, ConsoleOutput consoleOutput,PastaView pastaView) {
 		this.funcionarioRepository = funcionarioRepository;
 		this.consoleOutput = consoleOutput;
+		this.pastaView = pastaView;
 	}
 
 	public void exibirOpcoes() {
@@ -60,6 +63,8 @@ public class FuncionarioController {
 
 		var funcionarios = new ArrayList<Funcionario>();
 		funcionarios.add(funcionario);
+		var pasta = pastaView.escolherDiretorio();
+		var caminho = pasta.getAbsolutePath();
 
 		funcionarioRepository.exportar(funcionarios);
 		consoleOutput.exibirTextoComQuebra("Funcionário cadastrado com sucesso!");
