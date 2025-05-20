@@ -66,7 +66,7 @@ public class FuncionarioController {
 		var pasta = pastaView.escolherDiretorio();
 		var caminho = pasta.getAbsolutePath();
 
-		funcionarioRepository.exportar(funcionarios);
+		funcionarioRepository.exportar(funcionarios,caminho);
 		consoleOutput.exibirTextoComQuebra("Funcionário cadastrado com sucesso!");
 	}
 
