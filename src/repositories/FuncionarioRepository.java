@@ -6,7 +6,5 @@ import entities.Funcionario;
 
 public interface FuncionarioRepository {
 
-	void exportar(List<Funcionario> funcionarios);
-
 	void exportar(List<Funcionario> funcionarios, String path);
 }

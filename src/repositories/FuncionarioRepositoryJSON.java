@@ -28,10 +28,4 @@ public class FuncionarioRepositoryJSON implements FuncionarioRepository {
 			throw new RepositoryException("Erro ao exportar funcionarios: " + e.getMessage());
 		}
 	}
-
-	@Override
-	public void exportar(List<Funcionario> funcionarios) {
-		// TODO Auto-generated method stub
-		
-	}
 }
