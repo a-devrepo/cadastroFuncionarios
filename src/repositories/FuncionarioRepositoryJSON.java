@@ -9,8 +9,8 @@ import exceptions.RepositoryException;
 public class FuncionarioRepositoryJSON implements FuncionarioRepository {
 
 	@Override
-	public void exportar(List<Funcionario> funcionarios) {
-		try (var printWriter = new PrintWriter("/tmp/funcionarios.json")) {
+	public void exportar(List<Funcionario> funcionarios, String path) {
+		try (var printWriter = new PrintWriter(path + "/funcionarios.json")) {
 			printWriter.println("[");
 
 			for (int i = 0; i < funcionarios.size(); i++) {
@@ -27,5 +27,11 @@ public class FuncionarioRepositoryJSON implements FuncionarioRepository {
 		} catch (Exception e) {
 			throw new RepositoryException("Erro ao exportar funcionarios: " + e.getMessage());
 		}
+	}
+
+	@Override
+	public void exportar(List<Funcionario> funcionarios) {
+		// TODO Auto-generated method stub
+		
 	}
 }
