@@ -1,6 +1,10 @@
 package principal;
 
+import java.util.Scanner;
+
+import controllers.ConsoleInput;
 import controllers.FuncionarioController;
+import controllers.InputValidator;
 import repositories.FuncionarioRepositoryJSON;
 import views.ConsoleOutput;
 
@@ -10,7 +14,11 @@ public class Main {
 		var funcionarioRepository = new FuncionarioRepositoryJSON();
 		var consoleOutput = new ConsoleOutput();
 		var pastaView = new views.PastaView();
-		var funcionarioController = new FuncionarioController(funcionarioRepository,consoleOutput,pastaView);
+		var inputValidator = new InputValidator();
+		var consoleInput = new ConsoleInput(inputValidator, new Scanner(System.in), consoleOutput);
+
+		var funcionarioController = new FuncionarioController(funcionarioRepository, consoleOutput, consoleInput,
+				pastaView);
 		funcionarioController.exibirOpcoes();
 	}
 }
