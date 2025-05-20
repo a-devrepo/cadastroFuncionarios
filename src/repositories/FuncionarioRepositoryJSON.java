@@ -1,6 +1,7 @@
 package repositories;
 
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import entities.Funcionario;
@@ -10,7 +11,8 @@ public class FuncionarioRepositoryJSON implements FuncionarioRepository {
 
 	@Override
 	public void exportar(List<Funcionario> funcionarios, String path) {
-		try (var printWriter = new PrintWriter(path + "/funcionarios.json")) {
+		var dataHora = gerarDataHora();
+		try (var printWriter = new PrintWriter(path + "/funcionarios_" + dataHora + ".json")) {
 			printWriter.println("[");
 
 			for (int i = 0; i < funcionarios.size(); i++) {
@@ -20,6 +22,7 @@ public class FuncionarioRepositoryJSON implements FuncionarioRepository {
 				printWriter.println("\t\t\"nome\": \"" + funcionario.getNome() + "\",");
 				printWriter.println("\t\t\"setor\": \"" + funcionario.getSetor().getDescricao() + "\",");
 				printWriter.println("\t\t\"funcao\": \"" + funcionario.getFuncao().getNome() + "\"");
+				printWriter.println("\t\t\"salario\": \"" + funcionario.getSalario() + "\",");
 				printWriter.println("\t}" + (i < funcionarios.size() - 1 ? "," : ""));
 			}
 
@@ -27,5 +30,10 @@ public class FuncionarioRepositoryJSON implements FuncionarioRepository {
 		} catch (Exception e) {
 			throw new RepositoryException("Erro ao exportar funcionarios: " + e.getMessage());
 		}
+	}
+
+	private String gerarDataHora() {
+		LocalDateTime agora = LocalDateTime.now();
+		return agora.toString().replace(":", "-").replace(".", "-").replace("T", "_");
 	}
 }
