@@ -5,6 +5,8 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
+import exceptions.DirectoryException;
+
 public class PastaView {
 
 	public File escolherDiretorio() {
@@ -14,9 +16,15 @@ public class PastaView {
 		seletor.setAcceptAllFileFilterUsed(false);
 
 		int retorno = seletor.showSaveDialog(null);
-		if (retorno == JFileChooser.APPROVE_OPTION) {
-			return seletor.getSelectedFile();
+		if (retorno == JFileChooser.CANCEL_OPTION) {
+			throw new DirectoryException("Seleção de diretório cancelada.");
 		}
-		return null;
+
+		var pasta = seletor.getSelectedFile();
+
+		if (pasta == null || !pasta.isDirectory()) {
+			throw new DirectoryException("Selecione um diretório válido.");
+		}
+		return seletor.getSelectedFile();
 	}
 }
