@@ -4,7 +4,7 @@ import exceptions.DadosEntradaException;
 
 public class InputValidator {
 
-	public static void validarSalario(String valor) {
+	public void validarSalario(String valor) {
 		try {
 			
 			Double.parseDouble(valor);
