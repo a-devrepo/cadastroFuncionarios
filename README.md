@@ -44,7 +44,7 @@ Contém abstrações e implementações para persistência/exportação de dados
 - `FuncionariosRepository`: Interface de repositório para persistência de dados.
 - Implementação em JSON: Exporta os dados dos funcionários em um arquivo `.json`.
 
-### `main`
+### `principal`
 Pacote principal onde o projeto é iniciado.
 
 - Instancia as classes principais.
