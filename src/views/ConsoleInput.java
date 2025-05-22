@@ -1,13 +1,13 @@
-package controllers;
+package views;
 
 import java.util.Scanner;
 import java.util.UUID;
 
+import controllers.InputValidator;
 import entities.Funcao;
 import entities.Funcionario;
 import entities.Setor;
 import exceptions.DadosEntradaException;
-import views.ConsoleOutput;
 
 public class ConsoleInput {
 

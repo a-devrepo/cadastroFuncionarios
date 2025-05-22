@@ -2,10 +2,10 @@ package principal;
 
 import java.util.Scanner;
 
-import controllers.ConsoleInput;
 import controllers.FuncionarioController;
 import controllers.InputValidator;
 import repositories.FuncionarioRepositoryJSON;
+import views.ConsoleInput;
 import views.ConsoleOutput;
 
 public class Main {

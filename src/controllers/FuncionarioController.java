@@ -9,6 +9,7 @@ import exceptions.DirectoryException;
 import exceptions.DomainException;
 import exceptions.RepositoryException;
 import repositories.FuncionarioRepository;
+import views.ConsoleInput;
 import views.ConsoleOutput;
 import views.DirectoryView;
 
